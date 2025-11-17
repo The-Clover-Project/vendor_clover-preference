@@ -15,39 +15,39 @@
  * limitations under the License.
  */
 
-package com.android.settings.custom.preference;
+package com.android.settings.clover.preference;
 
 import android.content.Context;
 import android.provider.Settings;
 import android.util.AttributeSet;
 
-public class GlobalSettingSwitchPreference extends SelfRemovingSwitchPreference {
+public class SecureSettingSwitchPreference extends SelfRemovingSwitchPreference {
 
-    public GlobalSettingSwitchPreference(Context context, AttributeSet attrs, int defStyle) {
+    public SecureSettingSwitchPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
-    public GlobalSettingSwitchPreference(Context context, AttributeSet attrs) {
+    public SecureSettingSwitchPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public GlobalSettingSwitchPreference(Context context) {
+    public SecureSettingSwitchPreference(Context context) {
         super(context, null);
     }
 
     @Override
     protected boolean isPersisted() {
-        return Settings.Global.getString(getContext().getContentResolver(), getKey()) != null;
+        return Settings.Secure.getString(getContext().getContentResolver(), getKey()) != null;
     }
 
     @Override
     protected void putBoolean(String key, boolean value) {
-        Settings.Global.putInt(getContext().getContentResolver(), key, value ? 1 : 0);
+        Settings.Secure.putInt(getContext().getContentResolver(), key, value ? 1 : 0);
     }
 
     @Override
     protected boolean getBoolean(String key, boolean defaultValue) {
-        return Settings.Global.getInt(getContext().getContentResolver(),
+        return Settings.Secure.getInt(getContext().getContentResolver(),
                 key, defaultValue ? 1 : 0) != 0;
     }
 }

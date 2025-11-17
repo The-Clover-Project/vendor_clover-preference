@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.custom.preference;
+package com.android.settings.clover.preference;
 
 import android.os.SystemProperties;
 import android.preference.PreferenceDataStore;
